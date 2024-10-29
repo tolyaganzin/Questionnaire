@@ -5,7 +5,7 @@ export interface QuestionOption {
 }
 
 export interface Question {
-  id: string;
+  id: number;
   label: string;
   type: 'single' | 'multiple' | 'open';
   options?: QuestionOption[]; // Options for single/multiple choice

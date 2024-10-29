@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { QuestionOption, Question } from 'question';
+import { Question } from './question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,15 +19,15 @@ export class DataService {
     return JSON.parse(localStorage.getItem(this.storageKey) || '[]');
   }
 
-  getQuestionById(id: string): Question | undefined {
+  getQuestionById(id: number): Question | undefined {
     return this.getQuestions().find(q => q.id === id);
   }
 
   addQuestion(question: Question): void {
     const questions = this.getQuestions();
     question.id = this.generateTimestampId();
-    if(question.options.length) {
-      question.options = question.options.map((item) => {
+    if(question.options!.length) {
+      question.options = question.options!.map((item) => {
         return {...item, id: this.generateTimestampId()}
       })
     }
@@ -43,7 +43,7 @@ export class DataService {
     localStorage.setItem(this.storageKey, JSON.stringify(questions));
   }
 
-  deleteQuestion(id: string): void {
+  deleteQuestion(id: number): void {
     const questions = this.getQuestions().filter(q => q.id !== id);
     localStorage.setItem(this.storageKey, JSON.stringify(questions));
   }

@@ -1,0 +1,17 @@
+<div *ngIf="question">
+  <div>
+    <span *ngIf="!question.answered">{{question.createdAt | date}}</span>
+    <span *ngIf="question.answered">{{question.createdAt | date}} / {{question.answeredAt | date}}</span>
+    <span>{{question.type + question.answered ? "answered" : "none answered"}}</span>
+  </div>
+  <h3>{{question.label}}</h3>
+  <div *ngIf="question.type !== 'open'" class="options-container">
+    <div *ngFor="let option of question.options">
+      <input type="option.type" name="questionOption" [(ngModel)]="option.value" [disabled]="isStatic">
+      <label for="single">Single Choice</label>
+    </div> 
+  </div>
+
+  <textarea *ngIf="question.type === 'open'" name="answer open" [(ngModel)]="question.openAnswer" [disabled]="isStatic"></textarea>
+
+</div>
