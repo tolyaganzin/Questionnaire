@@ -11,19 +11,18 @@ import { Question, QuestionOption } from './services/question.model';
   declarations: [
     QuestionViewComponent,
     OrderByDatePipe,
-    OrderByAnsweredFlagPipe,
-    DataService
+    OrderByAnsweredFlagPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule
   ],
+  providers: [DataService],
   exports: [
     QuestionViewComponent,
     OrderByDatePipe,
-    OrderByAnsweredFlagPipe,
-    DataService
+    OrderByAnsweredFlagPipe
   ]
 })
 export class SharedModule { }

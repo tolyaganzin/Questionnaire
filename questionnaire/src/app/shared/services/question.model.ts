@@ -10,7 +10,7 @@ export interface Question {
   type: 'single' | 'multiple' | 'open';
   options?: QuestionOption[]; // Options for single/multiple choice
   openAnswer: string; // for open question
-  createdAt: Date;
+  createdAt?: Date;
   answeredAt?: Date;
   answered?: boolean;
 }

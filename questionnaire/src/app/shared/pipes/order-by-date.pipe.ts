@@ -3,7 +3,7 @@ import { Question } from '../services/question.model';
 
 @Pipe({
   name: 'orderByDate',
-  standalone: true
+  standalone: false
 })
 export class OrderByDatePipe implements PipeTransform {
 

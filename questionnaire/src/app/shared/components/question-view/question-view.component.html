@@ -7,8 +7,8 @@
   <h3>{{question.label}}</h3>
   <div *ngIf="question.type !== 'open'" class="options-container">
     <div *ngFor="let option of question.options">
-      <input type="option.type" name="questionOption" [(ngModel)]="option.value" [disabled]="isStatic">
-      <label for="single">Single Choice</label>
+      <input type="option.type" name="questionOption" [value]="option.id" [(ngModel)]="option.value" [disabled]="isStatic">
+      <label for="single">{{option.name}}</label>
     </div> 
   </div>
 

@@ -3,7 +3,7 @@ import { Question } from '../services/question.model';
 
 @Pipe({
   name: 'orderByAnsweredFlag',
-  standalone: true
+  standalone: false
 })
 export class OrderByAnsweredFlagPipe implements PipeTransform {
 

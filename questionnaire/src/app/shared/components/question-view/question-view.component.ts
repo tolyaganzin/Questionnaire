@@ -3,8 +3,7 @@ import { Question, QuestionOption } from '../../services/question.model';
 
 @Component({
   selector: 'q-question-view',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './question-view.component.html',
   styleUrl: './question-view.component.scss'
 })

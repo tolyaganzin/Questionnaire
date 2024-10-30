@@ -1,0 +1,32 @@
+<h3>Select Question Type(s)</h3>
+
+<div *ngFor="let option of questionOptions">
+  <input
+    type="radio"
+    name="typeSelection"
+    [id]="option.id"
+    [value]="option.id"
+    (click)="onCheckboxClick(option.id, $event)"
+    [checked]="option.id === question.type"
+  />
+  <label [for]="option.id">{{ option.name }}</label>
+</div>
+
+<div>
+  <label for="textArea">Your Answer:</label>
+  <textarea
+    id="textArea"
+    [(ngModel)]="question.label"
+    rows="5"
+    minlength="1"
+    maxlength="1000"
+    required
+    (input)="checkCharacterCount()"
+  ></textarea>
+  <div *ngIf="characterCountWarning" class="warning">
+    {{characterCountWarning}}
+  </div>
+  <div>
+    {{ question.label.length }} / 1000 characters
+  </div>
+</div>
