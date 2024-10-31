@@ -1,1 +1,4 @@
 <p>question-create works!</p>
+<q-create-edit-form (questionChange)="questionChange($event)"></q-create-edit-form>
+<button *ngIf="isValid" (click)="createQuestion()">Create</button>
+<button *ngIf="!isValid" disabled>Create</button>

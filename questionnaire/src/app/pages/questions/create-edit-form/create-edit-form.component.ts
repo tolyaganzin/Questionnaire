@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Question, QuestionOption } from '../../../shared/services/question.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Question, QuestionOption } from '../../../shared/services/question.mode
   styleUrl: './create-edit-form.component.scss'
 })
 export class CreateEditFormComponent {
-  questionOptions = [
+  questionOptions: {id: 'single' | 'multiple' | 'open'; name: string;}[] = [
     { id: 'single', name: 'Single Choice' },
     { id: 'multiple', name: 'Multiple Choice' },
     { id: 'open', name: 'Open Answer' }
@@ -26,17 +26,26 @@ export class CreateEditFormComponent {
   }
   characterCountWarning: string = '';
 
-  onCheckboxClick(option: string,$event: MouseEvent) {
-    throw new Error('Method not implemented.');
+  @Output() questionChange: EventEmitter<{question: Question; isValid:boolean}> = new EventEmitter<{question: Question; isValid:boolean}>();
+
+  onCheckboxClick(option:  'single' | 'multiple' | 'open',$event: MouseEvent) {
+    this.question.type = option;
+    this.checkCharacterCount();
   }
-
-
-
+  
   checkCharacterCount(): void {
-    if(this.question.label.length < 1000 && this.question.label.length > 0) {
+    if(this.question.label.length < 1001 && this.question.label.length > 0) {
       this.characterCountWarning = '';
     } else {
-      this.characterCountWarning = this.question.label.length > 1000 ? 'Character limit exceeded!' : 'Character limit should be more than 1 and less than 1000!';
+      this.characterCountWarning = 'Character limit should be more than 1 and less than 1000!';
     }
+    this.emit();
   }
+  
+  emit() {
+    console.log(this.question.label.length);
+    
+    this.questionChange.emit({question: this.question, isValid: !this.characterCountWarning.length})
+  }
+
 }

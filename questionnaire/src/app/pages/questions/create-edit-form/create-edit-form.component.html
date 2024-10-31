@@ -1,5 +1,4 @@
-<h3>Select Question Type(s)</h3>
-
+<label>Select Question Type:</label>
 <div *ngFor="let option of questionOptions">
   <input
     type="radio"
@@ -12,8 +11,8 @@
   <label [for]="option.id">{{ option.name }}</label>
 </div>
 
+<label for="textArea">Enter your question:</label>
 <div>
-  <label for="textArea">Your Answer:</label>
   <textarea
     id="textArea"
     [(ngModel)]="question.label"
@@ -23,10 +22,7 @@
     required
     (input)="checkCharacterCount()"
   ></textarea>
-  <div *ngIf="characterCountWarning" class="warning">
-    {{characterCountWarning}}
-  </div>
   <div>
-    {{ question.label.length }} / 1000 characters
+    {{ question.label.length }} / 1000 characters. {{characterCountWarning}}
   </div>
 </div>
