@@ -8,12 +8,14 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { CreateEditFormComponent } from './create-edit-form/create-edit-form.component';
 import { QuestionCreateComponent } from './question-create/question-create.component';
+import { QuestionEditDeleteComponent } from './question-edit-delete/question-edit-delete.component';
 
 
 @NgModule({
   declarations: [
     CreateEditFormComponent,
-    QuestionCreateComponent
+    QuestionCreateComponent,
+    QuestionEditDeleteComponent
   ],
   imports: [
     CommonModule,
