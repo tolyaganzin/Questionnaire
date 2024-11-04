@@ -7,7 +7,6 @@ import { Question } from './question.model';
 export class DataService {
 
   private readonly storageKey = 'questions';
-  private readonly answerKey = 'answers';
 
   constructor() {}
 

@@ -6,7 +6,7 @@ import { QuestionCreateComponent } from './question-create/question-create.compo
 
 const routes: Routes = [
   { path: '', component: QuestionsManagementComponent },
-  { path: 'edit-delete', component: QuestionEditDeleteComponent },
+  { path: 'edit-delete/:id', component: QuestionEditDeleteComponent },
   { path: 'create', component: QuestionCreateComponent },
 ];
 
