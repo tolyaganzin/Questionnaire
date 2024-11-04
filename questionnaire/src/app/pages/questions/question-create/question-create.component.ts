@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Question } from '../../../shared/services/question.model';
+import { DataService } from '../../../shared/services/data.service';
 
 @Component({
   selector: 'q-question-create',
@@ -11,6 +12,8 @@ export class QuestionCreateComponent {
   isValid: boolean = false;
   question!: Question;
 
+  constructor(private dataService: DataService) { }
+
   questionChange(res:{question: Question, isValid: boolean}) {
     console.log(res);
     this.isValid = res.isValid;
@@ -18,6 +21,6 @@ export class QuestionCreateComponent {
   }
 
   createQuestion() {
-
+    this.dataService.addQuestion(this.question)
   }
 }
