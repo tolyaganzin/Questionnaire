@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Question } from '../../../shared/services/question.model';
 import { DataService } from '../../../shared/services/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'q-question-edit-delete',
@@ -13,11 +14,15 @@ export class QuestionEditDeleteComponent {
   questionOld!: Question;
   question!: Question;
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
+  ) { }
   
-  getQuestion() {
-    this.dataService.getQuestionById(1)
+  ngOnInit(): void {
+    this.question = this.route.snapshot.data['questionData'];
   }
+
   questionChange(res:{question: Question, isValid: boolean}) {
     console.log(res);
     this.isValid = res.isValid;
