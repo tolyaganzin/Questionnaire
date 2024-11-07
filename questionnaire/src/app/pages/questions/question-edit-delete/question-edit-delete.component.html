@@ -1,5 +1,6 @@
 <h2>Edit question page</h2>
-<q-create-edit-form (questionChange)="questionChange($event)"></q-create-edit-form>
+<button [routerLink]="['/questions']"><- back to questions</button>
+<q-create-edit-form [question]="questionOld" (questionChange)="questionChange($event)"></q-create-edit-form>
 <button *ngIf="isValid" (click)="editQuestion()">Edit</button>
 <button *ngIf="!isValid" disabled>Edit</button>
 <button (click)="deleteQuestion()">delete</button>

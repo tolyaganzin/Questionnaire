@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Question } from '../../../shared/services/question.model';
+import { DataService } from '../../../shared/services/data.service';
 
 @Component({
   selector: 'q-questions-management',
@@ -12,11 +12,10 @@ export class QuestionsManagementComponent implements OnInit {
 
   questions: Question[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor( private dataService: DataService) {}
 
   ngOnInit(): void {
-    // Access the data preloaded by the resolver
-    this.questions = this.route.snapshot.data['questions'];
+    this.questions = this.dataService.getQuestions();
   }
 
 }
