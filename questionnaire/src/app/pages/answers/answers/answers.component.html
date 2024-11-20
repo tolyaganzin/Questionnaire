@@ -1,2 +1,11 @@
 <p>answers works!</p>
 <button [routerLink]="['/home']"><i class="fa fa-angellist fa-3x" aria-hidden="true" ></i> home</button>
+
+<div class="main-container">
+  <div class="questions-list">
+    <q-question-view [isStatic]="false"  *ngFor="let question of questions | orderByAnsweredFlag | orderByDate " [question]="question" (answered)="answered($event)"></q-question-view>
+  </div>
+  <div class="questions-list">
+    <q-question-view  *ngFor="let question of questions | orderByAnsweredFlag: true | orderByDate : 'answeredAt' " [question]="question" ></q-question-view>
+  </div>
+</div>

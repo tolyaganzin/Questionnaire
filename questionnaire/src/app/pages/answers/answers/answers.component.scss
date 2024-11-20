@@ -1,0 +1,16 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+
+  .questions-list {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 32px);
+    padding: 10px;
+    margin: 0 5px;
+    height: calc(100dvh - 200px);
+    overflow: auto;
+    border: solid 1px gray;
+  }
+}
