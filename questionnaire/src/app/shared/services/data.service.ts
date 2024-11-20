@@ -25,10 +25,14 @@ export class DataService {
   addQuestion(question: Question): void {
     const questions = this.getQuestions();
     question.id = this.generateTimestampId();
+    question.createdAt = new  Date();
     if(question.options!.length) {
       question.options = question.options!.map((item) => {
         return {...item, id: this.generateTimestampId()}
       })
+    } else {
+      question.options?.push({value: false, name: 'option 1', id: this.generateTimestampId()})
+      question.options?.push({value: false, name: 'option 2', id: this.generateTimestampId()})
     }
     questions.push(question);
     localStorage.setItem(this.storageKey, JSON.stringify(questions));

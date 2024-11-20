@@ -2,12 +2,34 @@
   <div>
     <span *ngIf="!question.answered">{{question.createdAt | date}}</span>
     <span *ngIf="question.answered">{{question.createdAt | date}} / {{question.answeredAt | date}}</span>
-    <span>{{question.type + question.answered ? "answered" : "none answered"}}</span>
+    <span>{{question.answered ? " answered" : " none answered"}}</span>
   </div>
   <h3>{{question.label}}</h3>
   <div *ngIf="question.type !== 'open'" class="options-container">
     <div *ngFor="let option of question.options">
-      <input type="option.type" name="questionOption" [value]="option.id" [(ngModel)]="option.value" [disabled]="isStatic">
+      <input
+        *ngIf="question.type === 'single'"
+        type="radio"
+        name="typeSelection"
+        [id]="option.id"
+        [value]="option.id"
+        [(ngModel)]="option.value"
+        [disabled]="isStatic"
+        name="questionOption"
+        [checked]="option.value"
+      />
+      <input
+        *ngIf="question.type === 'multiple'"
+        type="checkbox"
+        name="typeSelection"
+        [id]="option.id"
+        [value]="option.id"
+        [(ngModel)]="option.value"
+        [disabled]="isStatic"
+        name="questionOption"
+        [checked]="option.value"
+      />
+      <!-- <input type="option.type === 'multiple' : checkbox : radio" name="questionOption" [value]="option.id" [(ngModel)]="option.value" [disabled]="isStatic"> -->
       <label for="single">{{option.name}}</label>
     </div> 
   </div>
